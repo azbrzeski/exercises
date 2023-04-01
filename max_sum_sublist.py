@@ -3,16 +3,16 @@ from random import randint
 
 DEBUG = False
 
-'''Code comparing performance of two functions doing the same task
-but using different method.
-One of the functions is creating list to store potential result list
-And the other is storing only indices of result
-and creating result list at the return statement
-
-The task is to search through given list and find the sublists 
-with maximal possible sum of elements.
-arr1..arr7 are list created for functions testing
-with given results.'''
+# Code comparing performance of two functions doing the same task
+# but using different method.
+# One of the functions is creating list to store potential result list
+# And the other is storing only indices of result
+# and creating result list at the return statement
+#
+# The task is to search through given list and find the sublist
+# with maximal possible sum of elements.
+# arr1..arr7 are list created for functions testing
+# with given results.
 
 
 arr1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
@@ -104,12 +104,17 @@ def max_sublist_indices(array):
 
 
 def performance_check(repeats: int, func, *args, **kwargs) -> None:
-	'''Function checking performance of execution function "func" repeated "repeats" times.
-	function prints the results to stdout.'''
+	"""
+	Function checking performance of execution function "func" repeated "repeats" times.
+	function prints the results to stdout.
+	"""
 	time_start = perf_counter()
 
-	for i in range(repeats):
-		result_sum, result_list = func(*args, **kwargs)
+	for i in range(repeats-1):
+		func(*args, **kwargs)
+
+	# last execution is simply to assign results to variables
+	result_sum, result_list = func(*args, **kwargs)
 
 	time_end = perf_counter()
 
